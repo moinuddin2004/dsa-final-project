@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <windows.h>
 #include <ctime>
+#include <fstream>
+#include <limits>
 
 using namespace std;
 
@@ -38,6 +40,7 @@ int countitem();
 /// extra design Function
 void cls();
 void echo(const string &print);
+
 void br(int line);
 void pre(int tab);
 void span(int space);
@@ -105,7 +108,8 @@ int main()
         adminpanelchoice:
             cls();
             pre(4);
-            cout << "1. Main Menu" << end << endl
+            cout << "1. Main Menu" << endl
+                 << endl
                  << "\t";
             Sleep(300);
             cout << "Please Enter Password or (1 to Back in Main Menu): ";
@@ -383,7 +387,7 @@ int main()
 
                     goto adminchoise;
                 }
-                else if (adminchoise == 0)
+                else if (admin_choice == 0)
                 {
 
                     goto mainmenu;
@@ -444,7 +448,7 @@ int main()
             goto mainmenu;
         }
 
-        node *temp;
+        Node *temp;
 
         temp = list;
 
@@ -504,7 +508,7 @@ int main()
             cout << "1. Confirm to buy this \n\n";
             pre(4);
             cout << "2. Item List \n\n";
-            cout "Press 1 to confirm and 2 to back to list :";
+            cout << "Press 1 to confirm and 2 to back to list :";
 
         confirm:
             int confirm;
@@ -535,7 +539,7 @@ int main()
                     order_quantity[order] = fcquantity;
                     uquantity = temp->quantity - fcquantity;
 
-                    updatefood(get_food_choice, uquantity);
+                    updateFood(get_food_choice, uquantity);
 
                     cls();
                     middle1();
@@ -609,7 +613,7 @@ int main()
 
                     uquantity = temp->quantity - fcquantity;
 
-                    updatefood(get_food_choice, uquantity);
+                    updateFood(get_food_choice, uquantity);
 
                     br(2);
                     pre(4);
@@ -685,11 +689,10 @@ int main()
 
         } /// end get food choice
     }
+    return 0;
 }
 
 // Initialization and other code here...
-return 0;
-}
 
 // Function Definitions
 
@@ -796,7 +799,7 @@ void deletefood(int serial)
     }
 }
 
-void updatefood(int udata, int uquantity)
+void updateFood(int udata, int uquantity)
 {
     Node *temp = list;
     while (temp->data != udata)
@@ -1018,9 +1021,9 @@ void cls()
     system("cls");
 }
 
-void echo(char print[])
+void echo(const string &print)
 {
-    cout << print << end;
+    cout << print << endl;
 }
 
 void br(int line)
