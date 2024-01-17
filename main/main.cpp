@@ -771,7 +771,7 @@ void insertEnd(int data, string foodname, int quantity, float price)
     }
 }
 
-void insertmid(int pos, int data, string foodname, int quantity, float price)
+void insertmid(int  pos, int data, string foodname, int quantity, float price)
 {
     Node *temp = new Node;
     temp->data = data;
